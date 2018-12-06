@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+	
+
+		<interceptors>
+			<interceptor name="auth"
+				class="com.techlab.interceptor.AuthInterceptor">
+			</interceptor>
+		</interceptors>
+
+		<global-results>
+			<result name="Login" type="chain">Login</result>
+		</global-results>
+
+		<action name="" class="com.techlab.action.ContactsAction">
+			<result name="success">views/Contacts.jsp</result>
+		</action>
+
+		<action name="Contacts"
+			class="com.techlab.action.ContactsAction">
+			<result name="success">views/Contacts.jsp</result>
+		</action>
+
+		<action name="Add" class="com.techlab.action.AddAction">
+			<interceptor-ref name="auth"></interceptor-ref>
+			<result name="success">views/Add.jsp</result>
+			<result name="input">views/Add.jsp</result>
+			<result name="login" type="chain">Contacts</result>
+			<result name="error" type="chain">Login</result>
+		</action>
+
+		<action name="Edit" class="com.techlab.action.EditAction">
+			<interceptor-ref name="auth"></interceptor-ref>
+			<result name="success">views/Edit.jsp</result>
+			<result name="input">views/Edit.jsp</result>
+			<result name="login" type="chain">Contacts</result>
+			<result name="error" type="chain">Login</result>
+		</action>
+
+		<action name="Delete" class="com.techlab.action.DeleteAction">
+			<interceptor-ref name="auth"></interceptor-ref>
+			<result name="success" type="chain">Contacts</result>
+			<result name="error" type="chain">Login</result>
+		</action>
+
+		<action name="LogOut" class="com.techlab.action.LogOutAction">
+			<result name="success" type="chain">Contacts</result>
+		</action>
+
+		<action name="Login" class="com.techlab.action.LoginAction">
+			<result name="success">views/Login.jsp</result>
+			<result name="error">views/Login.jsp</result>
+			<result name="login" type="chain">Contacts</result>
+		</action>
+
+
+	</package>
+</struts>

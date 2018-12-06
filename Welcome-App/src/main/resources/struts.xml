@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="main" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="home"
+				class="com.techlabs.interceptor.HomeInterceptor"></interceptor>
+			<interceptor name="new"
+				class="com.techlabs.interceptor.NewInterceptor"></interceptor>
+		</interceptors>
+
+
+		<action name="Home" class="com.techlabs.action.HomeAction">
+			<interceptor-ref name="home"></interceptor-ref>
+			<interceptor-ref name="new"></interceptor-ref>			
+			<result name="success">views/Home.jsp</result>
+		</action>
+
+		<action name="Login" class="com.techlabs.action.LoginAction">
+			<result name="success">views/Login.jsp</result>
+			<result name="input">views/Login.jsp</result>
+		</action>
+
+		<action name="Register"
+			class="com.techlabs.action.RegisterAction">
+			<result name="success">views/Register.jsp</result>
+			<result name="input">views/Register.jsp</result>
+		</action>
+
+		<action name="Session"
+			class="com.techlabs.action.SessionAction">
+			<result name="success">views/Session.jsp</result>
+		</action>
+
+	</package>
+</struts>
