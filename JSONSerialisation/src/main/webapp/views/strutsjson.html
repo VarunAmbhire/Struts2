@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>JSoN from Struts</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<input type="button" id="click" value="Get JSON">
+
+	<div id="display"></div>
+
+	<script>
+		// getData()
+
+		$("#click").click(getData)
+
+		function getData() {
+			var url = "http://localhost:8080/JSONSerialisation/jsondata";
+			$.getJSON(url, function(data) {
+				console.log(data)
+				var str=JSON.stringify(data);
+				$("#display").text(str)
+			});
+		}
+	</script>
+</body>
+
+</html>

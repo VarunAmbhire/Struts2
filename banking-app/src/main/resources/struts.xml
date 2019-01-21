@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="default" extends="struts-default">
+		<action name="Login" class="com.techlabs.actions.LoginAction">
+			<result name="login">views/Login.jsp</result>
+			<result name="success" type="chain">Transaction</result>
+			<result name="error">index.html</result>
+		</action>
+
+		<action name="Register"
+			class="com.techlabs.actions.RegisterAction">
+			<result name="success">views/Register.jsp</result>
+			<result name="login">index.html</result>
+		</action>
+
+		<action name="Transaction"
+			class="com.techlabs.actions.TransactionAction">
+			<result name="success">views/Transaction.jsp</result>
+			<result name="input" type="chain">Passbook</result>
+		</action>
+
+		<action name="Passbook"
+			class="com.techlabs.actions.PassbookAction">
+			<result name="success">views/Passbook.jsp</result>
+		</action>
+
+		<action name="Download"
+			class="com.techlabs.actions.DownloadAction">
+			<result name="success">views/Passbook.jsp</result>
+		</action>
+
+		<action name="Admin"
+			class="com.techlabs.actions.AdminLoginAction">
+			<result name="login">views/AdminLogin.jsp</result>
+			<result name="success" type="chain">AdminPanel</result>
+		</action>
+
+		<action name="AdminPanel"
+			class="com.techlabs.actions.AdminPanelAction">
+			<result name="success">views/AdminPanel.jsp</result>
+		</action>
+
+
+
+	</package>
+</struts>
